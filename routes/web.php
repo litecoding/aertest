@@ -21,4 +21,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::any('/search', function () {
+    return view('flight_search');
+})->middleware(['auth'])->name('flight_search');
+
+Route::any('/search_results','FlightController@viewSearchResults')->middleware(['auth'])->name('flight_search_results');
+
 require __DIR__.'/auth.php';
