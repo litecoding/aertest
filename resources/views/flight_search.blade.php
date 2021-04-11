@@ -14,6 +14,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="/search_results">
                         @csrf
+                        <input type="hidden" name="timezone" id="timezone">
                         <p class="p-6"><b>Departure:</b><br>
                             <input type="text" size="40" name="departure_airport">
                         </p>

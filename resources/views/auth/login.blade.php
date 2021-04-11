@@ -14,7 +14,7 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
+            <input type="hidden" name="timezone" id="timezone" value="">
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />
@@ -54,3 +54,14 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // get user timezone
+            $('#timezone').val(Intl.DateTimeFormat().resolvedOptions().timeZone);
+            console.log(7);
+            console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+        })
+    </script>
+

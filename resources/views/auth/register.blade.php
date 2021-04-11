@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <input type="hidden" name="timezone" id="timezone" value="">
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />
@@ -57,3 +57,10 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+    <script>
+        $(function () {
+            // get user timezone
+            $('#timezone').val(Intl.DateTimeFormat().resolvedOptions().timeZone)
+        })
+    </script>

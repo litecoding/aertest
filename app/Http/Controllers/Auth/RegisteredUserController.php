@@ -44,6 +44,11 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]));
 
+        if ($timezone = $request->get('timezone')) {
+            $user->timezone = $request->get('timezone');
+            $user->save();
+        }
+
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);

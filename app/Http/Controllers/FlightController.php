@@ -13,7 +13,8 @@ class FlightController extends Controller
     {
         $startDate = (new Carbon($request['departure_date']))->startOfDay();
         $endDate = (new Carbon($request['departure_date']))->endOfDay();
-        $result = Flight::where('departure_airport', Airport::where('code', $request['departure_airport'])->firstOrFail()->id)
+
+        return Flight::where('departure_airport', Airport::where('code', $request['departure_airport'])->firstOrFail()->id)
             ->where('arrival_airport', Airport::where('code', $request['arrival_airport'])->firstOrFail()->id)
             ->whereBetween('departure_date_time', [$startDate, $endDate])
             ->with(array('transporter' => function ($query) {
@@ -23,8 +24,6 @@ class FlightController extends Controller
             ->with('arrivalAirport:id,code')
             ->get()
             ->toArray();
-
-        return $result;
     }
 
     /**
