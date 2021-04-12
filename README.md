@@ -24,11 +24,11 @@
 - Available airports ABC, DEF, GHI, JKL, MNO, PQR, STU, VWX, YZ
 - Available dates between today and +3 days
 
-###web
+### web
 - Open `http://127.0.0.1/search`
 
 
-###api
+### api
 - login with your email and password `http://127.0.0.1/api/auth/login`
 - send POST query with bearer token to `http://127.0.0.1/api/search`
 
