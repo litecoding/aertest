@@ -5,6 +5,7 @@
 - `docker run --rm -v $(pwd):/app composer install`
 - `sudo chown -R $USER:$USER ~/aertest`
 - `docker-compose up -d`
+- `cp .env.example .env`
 - `docker-compose exec app php artisan key:generate`
 - `docker-compose exec app php artisan config:cache`
 - `docker-compose exec app php artisan migrate`
