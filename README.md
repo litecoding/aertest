@@ -11,6 +11,7 @@
 - `docker-compose exec app php artisan migrate`
 - `docker-compose exec app php artisan db:seed`
 - `docker-compose exec app php artisan jwt:secret`
+- `docker-compose exec app php artisan optimize`
 
 
 ## Create user
