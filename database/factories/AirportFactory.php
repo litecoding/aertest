@@ -22,7 +22,7 @@ class AirportFactory extends Factory
     public function definition()
     {
         return [
-            'code' => $this->faker->unique()->regexify('[A-Z]{3,5}'),
+            'code' => $this->faker->unique()->randomElement(['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQR', 'STU', 'VWX', 'YZ']),
             'name' => $this->faker->city . ' city airport',
             'country' => $this->faker->country,
             'city' => $this->faker->city,

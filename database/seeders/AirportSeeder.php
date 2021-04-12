@@ -14,6 +14,6 @@ class AirportSeeder extends Seeder
      */
     public function run()
     {
-        Airport::factory(10)->create();
+        Airport::factory(9)->create();
     }
 }

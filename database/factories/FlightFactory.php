@@ -25,7 +25,7 @@ class FlightFactory extends Factory
     public function definition()
     {
         $duration = $this->faker->numberBetween(30, 500);
-        $departureDateTime = $this->faker->dateTimeBetween('+1 week', '+2 weeks');
+        $departureDateTime = $this->faker->dateTimeBetween('now', '+3 days');
         $departureAirport = $this->faker->numberBetween(1, Airport::count());
         $arrivalAirport = $this->faker->randomElement(Airport::where('id', '!=', $departureAirport)->pluck('id'));
         return [
