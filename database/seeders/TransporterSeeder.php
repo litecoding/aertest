@@ -14,6 +14,6 @@ class TransporterSeeder extends Seeder
      */
     public function run()
     {
-        Transporter::factory(200)->create();
+        Transporter::factory(20)->create();
     }
 }

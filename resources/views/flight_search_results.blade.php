@@ -13,28 +13,37 @@
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <p>
-                        @php($searchQuery = json_decode($search))
-                        Departure airport: {{ $searchQuery->departure_airport }}<br>
-                        Arrival airport: {{ $searchQuery->arrival_airport }}<br>
-                        Departure DateTime: {{ $searchQuery->departure_date }}<br>
+                        @php($searchQuery = $search)
+                        Departure airport: {{ $searchQuery['departure_airport'] }}<br>
+                        Arrival airport: {{ $searchQuery['arrival_airport'] }}<br>
+                        Departure DateTime: {{ $searchQuery['departure_date'] }}<br>
                     </p>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     Search Results
                 </div>
+                @if (count($errors) > 0)
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <b>Error:</b>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <p><b>{{ '' ?? 'Nothing was found' }}</b></p>
-                    @foreach (json_decode($flights) as $flight)
-                        <p>
-                        Transporter code: {{ $flight->transporter->code }} <br>
-                        Transporter name: {{ $flight->transporter->name }}<br>
-                        Flight number: {{ $flight->flight_number }}<br>
-                        Departure airport: {{ $flight->departure_airport->code }}<br>
-                        Arrival airport: {{ $flight->arrival_airport->code }}<br>
-                        Departure DateTime: {{ $flight->departure_date_time }}<br>
-                        Arrival DateTime: {{ $flight->arrival_date_time }}<br>
-                        Duration: {{ $flight->duration }}<br>
-                        </p>
+                    @foreach ($flights as $flight)
+                        <div class="p-6 bg-white border-b border-gray-200">
+                        Transporter code: {{ $flight['transporter']['code'] }} <br>
+                        Transporter name: {{ $flight['transporter']['name'] }}<br>
+                        Flight number: {{ $flight['flight_number'] }}<br>
+                        Departure airport: {{ $flight['departure_airport']['code'] }}<br>
+                        Arrival airport: {{ $flight['arrival_airport']['code'] }}<br>
+                        Departure DateTime: {{ $flight['departure_date_time'] }}<br>
+                        Arrival DateTime: {{ $flight['arrival_date_time'] }}<br>
+                        Duration: {{ $flight['duration'] }} min<br>
+                        </div>
                         <hr>
                     @endforeach
                 </div>

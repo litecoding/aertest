@@ -11,6 +11,17 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Search
                 </div>
+                @if (count($errors) > 0)
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <b>Error:</b>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form method="POST" action="/search_results">
                         @csrf
